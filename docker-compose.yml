@@ -1,0 +1,21 @@
+services:
+  empcokit:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: empcokit
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:4221:4221"
+    environment:
+      NODE_ENV: production
+      HOST: 0.0.0.0
+      PORT: 4221
+      EMPCOKIT_DATA_DIR: /app/data
+      BASE_PATH: ${BASE_PATH:-}
+      APP_ORIGIN: ${APP_ORIGIN:-}
+    volumes:
+      - empcokit_data:/app/data
+
+volumes:
+  empcokit_data:

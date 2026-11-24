@@ -1,0 +1,14 @@
+[Unit]
+Description=EmpCoKit EU Greenwashing (2024/825) & Legal Guarantee / GARAN (2025/1960) Auditor
+After=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/empcokit
+EnvironmentFile=/etc/empcokit/.env
+ExecStart=/usr/bin/node --no-warnings /opt/empcokit/server/index.mjs
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=default.target
